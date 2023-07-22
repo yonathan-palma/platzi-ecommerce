@@ -13,12 +13,15 @@ import { Navbar } from './components/NavBar';
 import { Layout } from './components/Layout';
 import { CheckoutSideMenu } from './components/CheckoutSideMenu';
 import { AccountForm } from './pages/AccountForm/AccountForm';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './hook/useAuth';
 
 //css
 import './App.css';
 import { AuthProvider } from './context/auth';
 
 const AppRoutes = () => {
+  const { session } = useAuth();
   let routes = useRoutes([
     {
       path: '/',
@@ -26,7 +29,7 @@ const AppRoutes = () => {
     },
     {
       path: '/:category',
-      element: <Home />,
+      element: session ? <Home /> : <Navigate replace to={'/sing-in'} />,
     },
     {
       path: '/my-orders',

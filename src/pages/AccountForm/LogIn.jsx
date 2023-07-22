@@ -13,8 +13,8 @@ export function LogIn({ setViewForm }) {
   return (
     <div className='flex flex-col w-80'>
       <ul>
+        <li>name {user?.name}</li>
         <li>Email: {user?.email}</li>
-        <li>Password {user?.password}</li>
       </ul>
       <button
         type='button'

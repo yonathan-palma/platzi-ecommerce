@@ -31,15 +31,6 @@ export function AuthProvider({ children }) {
     return window.localStorage.setItem('account', JSON.stringify(state));
   };
 
-  // const signOutInLocalStorage = JSON.parse(window.localStorage.getItem('sign-out'));
-  // const accountInLocalStorage = JSON.parse(window.localStorage.getItem('account'))
-  // if (signOutInLocalStorage === null) {
-  //   window.localStorage.setItem('sign-out', JSON.stringify(false));
-  //   window.localStorage.setItem('account', JSON.stringify({}));
-  // } else {
-  //   const accountStorage = JSON.parse(window.localStorage.getItem('account'));
-  // }
-
   return (
     <AuthContext.Provider
       value={{

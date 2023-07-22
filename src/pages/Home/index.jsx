@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { CartContext } from '../../context';
+// import { Navigate } from 'react-router-dom';
 
 import { Card } from '../../components/Card';
 import { ProductDetail } from '../../components/ProductDetail';

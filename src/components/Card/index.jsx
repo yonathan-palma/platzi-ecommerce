@@ -68,7 +68,7 @@ export function Card({ data }) {
           {/* <PlusIcon className='h-6 w-6 text-black cursor-pointer' /> */}
         </button>
       </figure>
-      <p className='flex justify-between'>
+      <p className='flex justify-between items-center'>
         <span className='text-sm font-light'>{title}</span>
         <span className='text-lg font-medium'>{price}</span>
       </p>

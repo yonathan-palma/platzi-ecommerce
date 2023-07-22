@@ -17,36 +17,45 @@ export function CreateUser() {
       password,
     });
     navigate('/');
-    // console.log(Object.fromEntries(formData));
+    console.log(Object.fromEntries(formData));
   };
   return (
     <div className='flex flex-col w-80'>
       <form onSubmit={handleCreateUser} ref={formulario}>
         <div className='flex flex-col pb-4'>
-          <label htmlFor='name'>Your name:</label>
+          <label className='font-light text-sm' htmlFor='name'>
+            Your name:
+          </label>
           <input
             type='text'
             className=' border border-gray-400 rounded-lg p-2'
             name='name'
+            placeholder='Peter'
             id='name'
           />
         </div>
         <div className='flex flex-col pb-4'>
-          <label htmlFor='name'>Your Email:</label>
+          <label className='font-light text-sm' htmlFor='name'>
+            Your Email:
+          </label>
           <input
             type='email'
             className=' border border-gray-400 rounded-lg p-2'
             name='email'
+            placeholder='hi@helloworld.com'
             id='email'
           />
         </div>
         <div className='flex flex-col pb-2'>
-          <label htmlFor='name'>Your Password:</label>
+          <label className='font-light text-sm' htmlFor='name'>
+            Your Password:
+          </label>
           <input
             type='password'
             className=' border border-gray-400 rounded-lg p-2'
             name='password'
             id='password'
+            placeholder='******'
             autoComplete='on'
           />
         </div>
