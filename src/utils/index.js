@@ -1,3 +1,3 @@
 export const totalPrice = (products) => {
-  return products.reduce((acu, elem) => acu + elem.price, 0);
+  return products.reduce((acu, elem) => acu + elem.price * elem.quantity, 0);
 };

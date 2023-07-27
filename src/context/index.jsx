@@ -4,13 +4,13 @@ import { getProducts } from '../services/getProducts';
 
 import PropTypes from 'prop-types';
 
-CartProvider.propTypes = {
+CartProviderChimbo.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
 export const CartContext = createContext();
 
-export function CartProvider({ children }) {
+export function CartProviderChimbo({ children }) {
   const [count, setCount] = useState(0);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [productToshow, setIsProductToshow] = useState({

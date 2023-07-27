@@ -6,10 +6,19 @@ OrderCard.propTypes = {
   // id: PropTypes.number,
   price: PropTypes.number,
   image: PropTypes.array,
+  quantity: PropTypes.number,
   handleDelete: PropTypes.func,
+  addToCart: PropTypes.func,
 };
 
-export function OrderCard({ title, price, image, handleDelete }) {
+export function OrderCard({
+  title,
+  price,
+  image,
+  quantity,
+  handleDelete,
+  addToCart,
+}) {
   let renderXCircleIcon;
   if (handleDelete) {
     renderXCircleIcon = (
@@ -27,6 +36,10 @@ export function OrderCard({ title, price, image, handleDelete }) {
           />
         </figure>
         <p className='taxt-sm font-light'>{title}</p>
+        <p className='taxt-sm font-light'>X{quantity}</p>
+        <button className='border p-2 rounded-lg' onClick={addToCart}>
+          +
+        </button>
       </div>
       <div className='flex items-center gap-2'>
         <p className=' text-lg font-medium'>{price}</p>

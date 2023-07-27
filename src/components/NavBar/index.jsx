@@ -1,27 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import { menu1 } from '../../const';
-import { useContext } from 'react';
-import { CartContext } from '../../context';
 
 //hook
 import { useAuth } from '../../hook/useAuth';
-
-//icons
-import { ShoppingCartIcon } from '@heroicons/react/24/solid';
+import { Cart } from '../Carrito';
 
 export function Navbar() {
   const { session, user, setSessionInLocalStorage } = useAuth();
   const activeStyle = 'underline underline-offset-4';
-  // const classNavLink = (isActive) => {
-  //   if (isActive) return activeStyle;
-  //   // if (!session) return 'pointer-events-none';
-  //   return undefined;
-  // };
-  const { products, OpenCheckoutSideMenu } = useContext(CartContext);
+
   return (
     <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-32 text-sm font-light'>
-      <div className='w-full flex justify-between border-b-[3px] border-gray-200 pb-8'>
-        <ul className='flex items-end gap-4'>
+      <div className='w-full flex items-end border-b-[3px] border-gray-200 gap-4 pb-8'>
+        <ul className='flex items-end gap-4 flex-1'>
           <li className='font-semibold text-3xl pr-4 no-underline'>
             <NavLink to={session ? '/' : 'sing-in'}>Shopi</NavLink>
           </li>
@@ -52,17 +43,8 @@ export function Navbar() {
               Sing In
             </NavLink>
           </li>
-
-          <li
-            className='flex cursor-pointer'
-            onClick={() => {
-              OpenCheckoutSideMenu();
-            }}
-          >
-            <ShoppingCartIcon className='h-6 w-6 text-black' />
-            {products.length}
-          </li>
         </ul>
+        <Cart />
       </div>
     </nav>
   );

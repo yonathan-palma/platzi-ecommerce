@@ -5,7 +5,6 @@ import { CartContext } from '../../context';
 export function ProductDetail() {
   const { isProductDetailOpen, closeProductDetail, productToshow } =
     useContext(CartContext);
-  // console.log(productToshow);
   return (
     <aside
       className={`${

@@ -1,15 +1,16 @@
-import { useContext } from 'react';
-import { CartContext } from '../../context';
-// import { Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
+//components
 import { Card } from '../../components/Card';
 import { ProductDetail } from '../../components/ProductDetail';
-// import { CheckoutSideMenu } from '../../components/CheckoutSideMenu';
+
+import useFilters from '../../hook/useFilters';
+import { getProducts } from '../../services/getProducts';
 
 export function Home() {
-  // const [products, setProducts] = useState([]);
-  const { products, searchByTitle, setSearchByTitle, filteredProducts } =
-    useContext(CartContext);
+  const [products, setProducts] = useState([]);
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const { filterProducts, setFilters } = useFilters();
 
   const capitalizarPrimeraLetra = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -20,29 +21,12 @@ export function Home() {
     currentPath.substring(currentPath.lastIndexOf('/') + 1)
   );
 
-  const renderView = () => {
-    if (searchByTitle?.length > 0) {
-      if (filteredProducts?.length > 0) {
-        return filteredProducts?.slice(0, 12).map((product) => (
-          // <Cart key={product.id} data={product} />
-          <Card key={product?.id} data={product} />
-        ));
-      } else {
-        return <div>We don&lsquo;t have anything:</div>;
-      }
-    } else {
-      if (index) {
-        console.log('index');
-        return products
-          ?.filter((item) => item.category.name === index)
-          .map((item) => <Card key={item.id} data={item} />);
-      } else {
-        return products
-          ?.slice(0, 12)
-          .map((product) => <Card key={product?.id} data={product} />);
-      }
-    }
-  };
+  useEffect(() => {
+    getProducts().then((res) => setProducts(res));
+  }, []);
+
+  const filteredProducts = filterProducts(products, index);
+  // console.log(filteredProducts);
 
   return (
     <>
@@ -52,14 +36,18 @@ export function Home() {
       <input
         type='text'
         className=' rounded-xl border border-black w-80 p-4 mb-4 focus:outline-none'
-        onChange={(event) => setSearchByTitle(event.target.value)}
+        onChange={(event) => setFilters(event.target.value)}
         placeholder='Search a product'
       />
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
-        {renderView()}
+        {filteredProducts?.slice(0, 12).map((product) => (
+          <Card key={product?.id} data={product} />
+        ))}
       </div>
-      <ProductDetail />
-      {/* <CheckoutSideMenu /> */}
+      <ProductDetail
+        isProductDetailOpen={isProductDetailOpen}
+        setIsProductDetailOpen={setIsProductDetailOpen}
+      />
     </>
   );
 }

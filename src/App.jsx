@@ -1,5 +1,5 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom';
-import { CartProvider } from './context';
+import { CartProviderChimbo } from './context';
 
 //pages
 import { Home } from './pages/Home';
@@ -15,10 +15,12 @@ import { CheckoutSideMenu } from './components/CheckoutSideMenu';
 import { AccountForm } from './pages/AccountForm/AccountForm';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './hook/useAuth';
+import { FilterProvider } from './context/filters';
 
 //css
 import './App.css';
 import { AuthProvider } from './context/auth';
+import { useCart } from './hook/useCart';
 
 const AppRoutes = () => {
   const { session } = useAuth();
@@ -64,18 +66,21 @@ const AppRoutes = () => {
 };
 
 function App() {
+  const { isCheckoutSideMenuOpen } = useCart();
   return (
-    <CartProvider>
-      <AuthProvider>
-        <BrowserRouter>
-          <Navbar />
-          <CheckoutSideMenu />
-          <Layout>
-            <AppRoutes />
-          </Layout>
-        </BrowserRouter>
-      </AuthProvider>
-    </CartProvider>
+    <CartProviderChimbo>
+      <FilterProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <Navbar />
+            {isCheckoutSideMenuOpen && <CheckoutSideMenu />}
+            <Layout>
+              <AppRoutes />
+            </Layout>
+          </BrowserRouter>
+        </AuthProvider>
+      </FilterProvider>
+    </CartProviderChimbo>
   );
 }
 

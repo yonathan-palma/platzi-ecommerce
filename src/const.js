@@ -37,3 +37,6 @@ export const menu1 = [
 ];
 
 export const API_PRODUCTS = 'https://api.escuelajs.co/api/v1/products';
+
+export const initialState =
+  JSON.parse(window.localStorage.getItem('cart')) || [];
