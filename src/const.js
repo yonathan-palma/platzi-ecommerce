@@ -10,7 +10,7 @@ export const menu1 = [
     className: '',
   },
   {
-    to: '/clothe',
+    to: '/clothes',
     text: 'clothes',
     className: '',
   },
@@ -20,7 +20,7 @@ export const menu1 = [
     className: '',
   },
   {
-    to: '/furnitures',
+    to: '/furniture',
     text: 'furnitures',
     className: '',
   },

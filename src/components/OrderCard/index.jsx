@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { XCircleIcon } from '@heroicons/react/24/solid';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 OrderCard.propTypes = {
   title: PropTypes.string,
@@ -22,27 +22,44 @@ export function OrderCard({
   let renderXCircleIcon;
   if (handleDelete) {
     renderXCircleIcon = (
-      <XCircleIcon className='h-6 w-6 text-black cursor-pointer' />
+      <TrashIcon className='h-6 w-6 text-black cursor-pointer hover:text-red-600' />
     );
   }
   return (
-    <div className='flex justify-between items-center mb-2'>
+    <li className='flex justify-between items-center mb-4'>
       <div className='flex items-center gap-2'>
-        <figure className='w-20 h-20'>
+        <figure className=' w-14 h-14'>
           <img
             className='w-full h-full object-cover rounded-lg'
             src={image}
             alt={title}
           />
         </figure>
-        <p className='taxt-sm font-light'>{title}</p>
-        <p className='taxt-sm font-light'>X{quantity}</p>
-        <button className='border p-2 rounded-lg' onClick={addToCart}>
-          +
-        </button>
+        <div className='pructDetail'>
+          <p className='taxt-sm font-light'>{title}</p>
+          <div className='flex text-sm font-light space-x-2'>
+            <p>
+              <span>$</span>
+              {price}
+            </p>
+            <span>X{quantity}</span>
+            <p>
+              <span>$</span>
+              {price * quantity}
+            </p>
+            {addToCart && (
+              <button
+                className='border py-1 px-2 rounded-lg text-orange-500'
+                onClick={addToCart}
+              >
+                +
+              </button>
+            )}
+          </div>
+        </div>
       </div>
       <div className='flex items-center gap-2'>
-        <p className=' text-lg font-medium'>{price}</p>
+        {/* <p className=' text-lg font-medium'>{price}</p> */}
         <button
           onClick={() => {
             handleDelete();
@@ -51,6 +68,6 @@ export function OrderCard({
           {renderXCircleIcon}
         </button>
       </div>
-    </div>
+    </li>
   );
 }

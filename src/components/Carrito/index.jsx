@@ -1,9 +1,12 @@
 import { useCart } from '../../hook/useCart';
 //icons
-import { ShoppingCartIcon } from '@heroicons/react/24/solid';
+import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 
 export function Cart() {
   const { cart, isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen } = useCart();
+  const totalProducts = (products) => {
+    return products.reduce((acu, elem) => acu + elem.quantity, 0);
+  };
   return (
     <>
       <div>
@@ -13,8 +16,8 @@ export function Cart() {
             setIsCheckoutSideMenuOpen(!isCheckoutSideMenuOpen);
           }}
         >
-          <ShoppingCartIcon className='h-6 w-6 text-black' />
-          {cart.length}
+          <ShoppingBagIcon className='h-6 w-6' />
+          {totalProducts(cart)}
         </button>
       </div>
     </>

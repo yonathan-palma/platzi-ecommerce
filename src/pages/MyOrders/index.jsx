@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { CartContext } from '../../context';
 import { Link } from 'react-router-dom';
+import useOrders from '../../hook/useOrders';
 
 import { OrdersCard } from '../../components/OrdersCard';
 
 export function MyOrders() {
-  const { order } = useContext(CartContext);
+  const { order } = useOrders();
   return (
     <>
       <div className='flex w-80 justify-center relative'>
@@ -17,7 +16,6 @@ export function MyOrders() {
             totalPrice={order.totalPrice}
             totalProducts={order.totalProducts}
           />
-          ;
         </Link>
       ))}
     </>

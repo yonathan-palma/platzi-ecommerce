@@ -1,12 +1,11 @@
-import { useContext } from 'react';
-import { CartContext } from '../../context';
 import { Link } from 'react-router-dom';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
+import useOrders from '../../hook/useOrders';
 
 import { OrderCard } from '../../components/OrderCard';
 
 export function MyOrder() {
-  const { order } = useContext(CartContext);
+  const { order } = useOrders();
   const currentPath = window.location.pathname;
   let index = currentPath.substring(currentPath.lastIndexOf('/') + 1);
   if (index === 'last') index = order?.length - 1;
@@ -25,6 +24,7 @@ export function MyOrder() {
             title={product.title}
             price={product.price}
             image={product.images}
+            quantity={product.quantity}
           />
         ))}
       </div>

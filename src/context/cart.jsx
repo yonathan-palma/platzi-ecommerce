@@ -25,6 +25,7 @@ function useCartReducer() {
     dispatch({
       type: CART_ACTION_TYPES.CLEAR_CART,
     });
+    // console.log(state);
   };
 
   return { state, addToCart, removeFromCart, clearCart };

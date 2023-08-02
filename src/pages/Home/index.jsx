@@ -39,11 +39,14 @@ export function Home() {
         onChange={(event) => setFilters(event.target.value)}
         placeholder='Search a product'
       />
-      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
-        {filteredProducts?.slice(0, 12).map((product) => (
-          <Card key={product?.id} data={product} />
-        ))}
+      <div className='mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
+        <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
+          {filteredProducts?.slice(0, 12).map((product) => (
+            <Card key={product?.id} data={product} />
+          ))}
+        </div>
       </div>
+
       <ProductDetail
         isProductDetailOpen={isProductDetailOpen}
         setIsProductDetailOpen={setIsProductDetailOpen}

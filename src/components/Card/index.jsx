@@ -15,18 +15,8 @@ Card.propTypes = {
 export function Card({ data }) {
   const { id, title, category, price, images } = data;
   // console.log(images);
-  const {
-    cart,
-    addToCart,
-    removeFromCart,
-    isCheckoutSideMenuOpen,
-    setIsCheckoutSideMenuOpen,
-  } = useCart();
-
-  // const showProduct = (ProductDetail) => {
-  //   openProductDetail();
-  //   setIsProductToshow(ProductDetail);
-  // };
+  const { cart, addToCart, isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen } =
+    useCart();
 
   const isInCart = cart.some((product) => product.id == id);
 
@@ -39,13 +29,13 @@ export function Card({ data }) {
   };
 
   return (
-    <div className=' bg-white cursor-pointer w-56 h-60 rounded-lg'>
-      <figure className='relative mb-2 w-full h-4/5'>
-        <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>
+    <div className='group relative'>
+      <figure className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80'>
+        {/* <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>
           {category.name}
-        </span>
+        </span> */}
         <img
-          className=' w-full h-full object-cover rounded-lg'
+          className='h-full w-full object-cover object-center lg:h-full lg:w-full'
           // onClick={() => showProduct(data)}
           src={images[0]}
           alt='heagPhone'
@@ -61,10 +51,18 @@ export function Card({ data }) {
           )}
         </button>
       </figure>
-      <p className='flex justify-between items-center'>
-        <span className='text-sm font-light'>{title}</span>
-        <span className='text-lg font-medium'>{price}</span>
-      </p>
+      <div className='mt-4 flex justify-between'>
+        <div>
+          <h3 className='text-sm text-gray-700'>
+            {/* <a href={product.href}> */}
+            <span aria-hidden='true' className='absolute inset-0' />
+            {title}
+            {/* </a> */}
+          </h3>
+          <p className='mt-1 text-sm text-gray-500'>{category.name}</p>
+        </div>
+        <p className='text-sm font-medium text-gray-900'>{price}</p>
+      </div>
     </div>
   );
 }
