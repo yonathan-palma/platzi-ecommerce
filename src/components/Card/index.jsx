@@ -31,9 +31,6 @@ export function Card({ data }) {
   return (
     <div className='group relative'>
       <figure className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80'>
-        {/* <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>
-          {category.name}
-        </span> */}
         <img
           className='h-full w-full object-cover object-center lg:h-full lg:w-full'
           // onClick={() => showProduct(data)}

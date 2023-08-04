@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 //components
 import { Card } from '../../components/Card';
 import { ProductDetail } from '../../components/ProductDetail';
+// import CatalogMagic from '../../components/Loader/Catalog';
+import MyLoader from '../../components/Loader/Loader';
 
 import useFilters from '../../hook/useFilters';
 import { getProducts } from '../../services/getProducts';
@@ -11,6 +13,7 @@ export function Home() {
   const [products, setProducts] = useState([]);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const { filterProducts, setFilters } = useFilters();
+  const [loading, setLoading] = useState(true);
 
   const capitalizarPrimeraLetra = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -22,11 +25,14 @@ export function Home() {
   );
 
   useEffect(() => {
-    getProducts().then((res) => setProducts(res));
+    getProducts().then((res) => {
+      setProducts(res);
+      setLoading(false);
+    });
   }, []);
 
   const filteredProducts = filterProducts(products, index);
-  // console.log(filteredProducts);
+  console.log(filteredProducts);
 
   return (
     <>
@@ -39,11 +45,22 @@ export function Home() {
         onChange={(event) => setFilters(event.target.value)}
         placeholder='Search a product'
       />
-      <div className='mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
+      <div className='mx-auto min-w-[80%] max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8'>
+        {filteredProducts.length == 0 && (
+          <h2>lo sentimos lo que estas buscando no se encuentra disponible</h2>
+        )}
         <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
           {filteredProducts?.slice(0, 12).map((product) => (
             <Card key={product?.id} data={product} />
           ))}
+          {loading && (
+            <>
+              <MyLoader />
+              <MyLoader />
+              <MyLoader />
+              <MyLoader />
+            </>
+          )}
         </div>
       </div>
 
