@@ -3,7 +3,8 @@ import { FilterContext } from '../context/filters';
 // import { getProducts } from '../services/getProducts';
 
 export default function useFilters() {
-  const { filters, setFilters } = useContext(FilterContext);
+  const { filters, setFilters, products, setProducts } =
+    useContext(FilterContext);
 
   const filterProducts = (products, category) => {
     return products.filter((product) => {
@@ -14,5 +15,5 @@ export default function useFilters() {
       );
     });
   };
-  return { filters, setFilters, filterProducts };
+  return { filters, setFilters, filterProducts, products, setProducts };
 }

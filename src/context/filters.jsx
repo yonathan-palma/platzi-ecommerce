@@ -9,8 +9,11 @@ FilterProvider.propTypes = {
 
 export function FilterProvider({ children }) {
   const [filters, setFilters] = useState('');
+  const [products, setProducts] = useState([]);
   return (
-    <FilterContext.Provider value={{ filters, setFilters }}>
+    <FilterContext.Provider
+      value={{ filters, setFilters, products, setProducts }}
+    >
       {children}
     </FilterContext.Provider>
   );

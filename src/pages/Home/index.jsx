@@ -2,17 +2,13 @@ import { useState, useEffect } from 'react';
 
 //components
 import { Card } from '../../components/Card';
-import { ProductDetail } from '../../components/ProductDetail';
-// import CatalogMagic from '../../components/Loader/Catalog';
 import MyLoader from '../../components/Loader/Loader';
 
 import useFilters from '../../hook/useFilters';
 import { getProducts } from '../../services/getProducts';
 
 export function Home() {
-  const [products, setProducts] = useState([]);
-  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-  const { filterProducts, setFilters } = useFilters();
+  const { filterProducts, setFilters, products, setProducts } = useFilters();
   const [loading, setLoading] = useState(true);
 
   const capitalizarPrimeraLetra = (str) => {
@@ -32,7 +28,6 @@ export function Home() {
   }, []);
 
   const filteredProducts = filterProducts(products, index);
-  console.log(filteredProducts);
 
   return (
     <>
@@ -63,11 +58,6 @@ export function Home() {
           )}
         </div>
       </div>
-
-      <ProductDetail
-        isProductDetailOpen={isProductDetailOpen}
-        setIsProductDetailOpen={setIsProductDetailOpen}
-      />
     </>
   );
 }

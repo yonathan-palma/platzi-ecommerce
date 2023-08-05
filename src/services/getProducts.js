@@ -1,8 +1,8 @@
 import { API_PRODUCTS } from '../const';
 
-export async function getProducts() {
+export async function getProducts(id = '') {
   try {
-    let response = await fetch(API_PRODUCTS);
+    let response = await fetch(`${API_PRODUCTS}${id}`);
     let data = await response.json();
     return data;
   } catch (error) {

@@ -1,5 +1,4 @@
-import { useRoutes, BrowserRouter } from 'react-router-dom';
-import { CartProviderChimbo } from './context';
+import { BrowserRouter, useRoutes } from 'react-router-dom';
 
 //pages
 import { Home } from './pages/Home';
@@ -16,6 +15,8 @@ import { AccountForm } from './pages/AccountForm/AccountForm';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from './hook/useAuth';
 import { FilterProvider } from './context/filters';
+// import { ProductDetail } from './components/ProductDetail';
+import { ProductDetail } from './pages/ProductDetail';
 
 //css
 import './App.css';
@@ -58,6 +59,10 @@ const AppRoutes = () => {
       element: <AccountForm />,
     },
     {
+      path: '/product/:id',
+      element: <ProductDetail />,
+    },
+    {
       path: '/*',
       element: <NotFound />,
     },
@@ -68,19 +73,17 @@ const AppRoutes = () => {
 function App() {
   const { isCheckoutSideMenuOpen } = useCart();
   return (
-    <CartProviderChimbo>
-      <FilterProvider>
-        <AuthProvider>
-          <BrowserRouter>
-            <Navbar />
-            {isCheckoutSideMenuOpen && <CheckoutSideMenu />}
-            <Layout>
-              <AppRoutes />
-            </Layout>
-          </BrowserRouter>
-        </AuthProvider>
-      </FilterProvider>
-    </CartProviderChimbo>
+    <FilterProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Navbar />
+          {isCheckoutSideMenuOpen && <CheckoutSideMenu />}
+          <Layout>
+            <AppRoutes />
+          </Layout>
+        </BrowserRouter>
+      </AuthProvider>
+    </FilterProvider>
   );
 }
 
