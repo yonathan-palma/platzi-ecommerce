@@ -20,12 +20,13 @@ export function ProductDetail() {
             <img
               className='h-full w-full rounded-lg object-cover object-center'
               src={singleProduct.images[0]}
+              style={{ viewTransitionName: `product-${singleProduct.id}` }}
               alt='Product'
             />
           </figure>
         </div>
         <div className='flex flex-col gap-8'>
-          <h1 className=' text-6xl font-bold uppercase text-gray-900'>
+          <h1 className='title-view text-6xl font-bold uppercase text-gray-900'>
             {singleProduct.title}
           </h1>
           <p className=' text-gray-500 text-lg leading-7'>

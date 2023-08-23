@@ -15,7 +15,7 @@ export function Navbar() {
     'underline underline-offset-[39px] decoration-orange-500 decoration-[3px]';
 
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full px-6 md:px-32 text-sm font-light bg-white'>
+    <nav className='main-header flex justify-between items-center fixed z-10 top-0 w-full px-6 md:px-32 text-sm font-light bg-white'>
       <div className='w-full flex items-center border-b-[3px] border-gray-200 gap-4 h-24'>
         <button
           className={`navbar-toggler relative mt-3 z-20 md:hidden ${

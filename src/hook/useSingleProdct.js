@@ -10,10 +10,14 @@ export function useSingleProduct() {
   const [singleProduct, setSingleProduct] = useState(productsFromCache);
 
   const [isError, setIsError] = useState(false);
-  console.log(singleProduct);
+
   useEffect(() => {
-    console.log(singleProduct);
-    console.log('yolo ');
+    // console.log(singleProduct);
+    // console.log('yolo ');
+    // async function fetchData() {
+    //   const data = await getProducts(id);
+    //   return data;
+    // }
     if (!singleProduct) {
       getProducts(id)
         .then((res) => {

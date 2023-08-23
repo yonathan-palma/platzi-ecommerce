@@ -72,6 +72,11 @@ const AppRoutes = () => {
 
 function App() {
   const { isCheckoutSideMenuOpen } = useCart();
+  let isViewTransition =
+    "Opss, Your browser doesn't support View Transitions API";
+  if (document.startViewTransition) {
+    isViewTransition = 'Yess, Your browser support View Transitions API';
+  }
   return (
     <FilterProvider>
       <AuthProvider>
@@ -81,6 +86,10 @@ function App() {
           <Layout>
             <AppRoutes />
           </Layout>
+          <footer>
+            <a href='/'>Complete tutorial on Medium</a>
+            <p>{isViewTransition}</p>
+          </footer>
         </BrowserRouter>
       </AuthProvider>
     </FilterProvider>
