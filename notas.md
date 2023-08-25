@@ -10,5 +10,5 @@
 -- quitar el skeletor cuando regresa\/
 -- agregar boton de regresar en pagina de producto \/
 -- intentar pagiacion \/
--- responsive
+-- responsive \/
 -- login

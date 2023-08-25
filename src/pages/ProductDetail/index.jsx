@@ -42,8 +42,8 @@ export function ProductDetail() {
             />
           </figure>
         </div>
-        <div className='flex flex-col gap-8'>
-          <h1 className='title-view text-6xl font-bold uppercase text-gray-900'>
+        <div className='flex flex-col gap-8 px-10'>
+          <h1 className='title-view text-3xl md:text-6xl font-bold uppercase text-gray-900'>
             {singleProduct.title}
           </h1>
           <p className=' text-gray-500 text-lg leading-7'>
@@ -52,8 +52,8 @@ export function ProductDetail() {
           <p className='text-3xl font-bold uppercase text-gray-900'>
             ${singleProduct.price}
           </p>
-          <div className='grid grid-cols-[40%_1fr] gap-4'>
-            <div className=' bg-gray-100 rounded-lg flex items-center justify-between px-2 py-1'>
+          <div className='grid md:grid-cols-[40%_1fr] gap-4'>
+            <div className=' bg-gray-100 rounded-lg flex items-center justify-between px-2 py-3'>
               <button
                 type='button'
                 onClick={() =>

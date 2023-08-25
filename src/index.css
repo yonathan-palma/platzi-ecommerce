@@ -131,3 +131,21 @@
     transform: translateX(-30px);
   }
 }
+
+@keyframes slidefinal {
+  from {
+    display: none;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideaway {
+  from {
+    display: block;
+  }
+  to {
+    opacity: 1;
+  }
+}
