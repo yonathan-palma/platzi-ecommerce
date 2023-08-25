@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 
 //components
 import { Card } from '../../components/Card';
-import MyLoader from '../../components/Loader/Loader';
 
 import useFilters from '../../hook/useFilters';
 import { getProducts } from '../../services/getProducts';
 import { Pagination } from '../../components/Pagination';
+import { Skeletor } from '../../components/Skeletor';
 
 export function Home() {
   const { filterProducts, setFilters, products, setProducts } = useFilters();
@@ -27,12 +27,14 @@ export function Home() {
   );
 
   useEffect(() => {
+    // if (products.length !== 0) return false;
     getProducts().then((res) => {
       setProducts(res);
       setLoading(false);
     });
-  }, [setProducts]);
-
+  }, [setProducts, setLoading]);
+  console.log(loading);
+  console.log(products.length);
   const filteredProducts = filterProducts(products, index);
 
   const lastIndex = currentPage * productsPerPage;
@@ -57,14 +59,7 @@ export function Home() {
           {filteredProducts?.slice(firstIndex, lastIndex).map((product) => (
             <Card key={product?.id} data={product} />
           ))}
-          {loading && (
-            <>
-              <MyLoader />
-              <MyLoader />
-              <MyLoader />
-              <MyLoader />
-            </>
-          )}
+          {loading && products.length == 0 && <Skeletor />}
         </div>
         <Pagination
           productsPerPage={productsPerPage}

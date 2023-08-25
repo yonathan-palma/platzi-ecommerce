@@ -75,7 +75,6 @@ export function Card({ data }) {
       e.target.style.mixBlendMode = 'normal';
 
       return document.startViewTransition(() => {
-        console.log(`product-${id}`);
         e.target.style.viewTransitionName = '';
         flushSync(() => {
           navigate(`product/${id}`);
