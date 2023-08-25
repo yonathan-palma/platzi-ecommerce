@@ -6,7 +6,7 @@
 # mejoras
 
 -- intentar una vez mas la transition \/
--- cambiar la api
+-- cambiar la api \/
 -- quitar el skeletor cuando regresa
 -- agregar boton de regresar en pagina de producto
 -- intentar pagiacion
