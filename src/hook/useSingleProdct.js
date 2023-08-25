@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getProducts } from '../services/getProducts';
+import { getSingleProducts } from '../services/getProducts';
 import { useParams } from 'react-router-dom';
 import useFilters from './useFilters';
 
@@ -19,7 +19,7 @@ export function useSingleProduct() {
     //   return data;
     // }
     if (!singleProduct) {
-      getProducts(id)
+      getSingleProducts(id)
         .then((res) => {
           // console.log(res);
           setSingleProduct(res);
@@ -27,6 +27,7 @@ export function useSingleProduct() {
         })
         .catch((err) => {
           setIsError(true);
+          console.log(err);
         });
     }
   }, [singleProduct, id]);

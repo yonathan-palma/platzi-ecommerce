@@ -5,7 +5,7 @@ OrderCard.propTypes = {
   title: PropTypes.string,
   // id: PropTypes.number,
   price: PropTypes.number,
-  image: PropTypes.array,
+  image: PropTypes.string,
   quantity: PropTypes.number,
   handleDelete: PropTypes.func,
   addToCart: PropTypes.func,

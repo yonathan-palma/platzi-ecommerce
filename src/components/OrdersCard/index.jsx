@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
 OrdersCard.propTypes = {
-  totalPrice: PropTypes.string,
+  totalPrice: PropTypes.number,
   totalProducts: PropTypes.number,
   // image: PropTypes.array,
   // handleDelete: PropTypes.func,

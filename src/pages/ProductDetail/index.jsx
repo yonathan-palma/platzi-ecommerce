@@ -19,7 +19,7 @@ export function ProductDetail() {
           <figure className='rounded-lg bg-gray-200 hover:opacity-75'>
             <img
               className='h-full w-full rounded-lg object-cover object-center'
-              src={singleProduct.images[0]}
+              src={singleProduct.image}
               style={{ viewTransitionName: `product-${singleProduct.id}` }}
               alt='Product'
             />

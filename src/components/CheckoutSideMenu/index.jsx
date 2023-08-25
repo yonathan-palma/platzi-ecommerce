@@ -55,7 +55,7 @@ export function CheckoutSideMenu() {
               key={product.id}
               title={product.title}
               price={product.price}
-              image={product.images}
+              image={product.image}
               quantity={product.quantity}
               handleDelete={() => removeFromCart(product)}
               addToCart={() => addToCart(product)}

@@ -10,28 +10,23 @@ export const menu1 = [
     className: '',
   },
   {
-    to: '/clothes',
-    text: 'clothes',
-    className: '',
-  },
-  {
     to: '/electronics',
     text: 'electronics',
     className: '',
   },
   {
-    to: '/furniture',
-    text: 'furnitures',
+    to: '/jewelery',
+    text: 'jewelery',
     className: '',
   },
   {
-    to: '/toys',
-    text: 'toys',
+    to: "/men's clothing",
+    text: "men's clothing",
     className: '',
   },
   {
-    to: '/others',
-    text: 'others',
+    to: "/women's clothing",
+    text: "women's clothing",
     className: '',
   },
 ];

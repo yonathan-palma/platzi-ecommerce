@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid';
 import { useCart } from '../../hook/useCart';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { flushSync } from 'react-dom';
 
 Card.propTypes = {
@@ -21,7 +21,7 @@ export function Card({ data }) {
   //   window.addEventListener('click', handleMove);
   // }, []);
 
-  const { id, title, category, price, images } = data;
+  const { id, title, category, price, image } = data;
   const { cart, addToCart, isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen } =
     useCart();
 
@@ -86,12 +86,12 @@ export function Card({ data }) {
 
   return (
     <div className='group relative'>
-      <figure className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80'>
+      <figure className='cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80'>
         {/* <NavLink to={`product/${id}`}> */}
         <img
           className=' h-full w-full object-cover object-center lg:h-full lg:w-full'
           // style={{ viewTransitionName: `product-${id}` }}
-          src={images[0]}
+          src={image}
           onClick={(e) => viewNavigate(e, id)}
           alt='heagPhone'
         />
@@ -116,9 +116,9 @@ export function Card({ data }) {
           >
             {title}
           </h3>
-          <p className='mt-1 text-sm text-gray-500'>{category.name}</p>
+          <p className='mt-1 text-sm text-gray-500'>{category}</p>
         </div>
-        <p className='text-sm font-medium text-gray-900'>{price}</p>
+        <p className='text-sm font-medium text-gray-900'>{`$${price}`}</p>
       </div>
     </div>
   );

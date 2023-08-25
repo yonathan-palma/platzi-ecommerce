@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { FilterContext } from '../context/filters';
-// import { getProducts } from '../services/getProducts';
 
 export default function useFilters() {
   const { filters, setFilters, products, setProducts } =
@@ -10,7 +9,7 @@ export default function useFilters() {
     return products.filter((product) => {
       const regex = new RegExp(filters, 'gi');
       return (
-        (category == '' || category == product.category.name) &&
+        (category == '' || category == product.category) &&
         (filters == '' || product.title.match(regex))
       );
     });
